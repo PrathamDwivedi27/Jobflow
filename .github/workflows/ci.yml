@@ -34,6 +34,17 @@ jobs:
 
       - run: npm ci
 
+      # NEW STEP: Automatically creates localized .env files from templates inside the runner
+      - name: Instantiate environment files from examples
+        run: |
+          echo "Replicating environment configuration templates..."
+          for app in apps/*; do
+            if [ -d "$app" ] && [ -f "$app/.env.example" ]; then
+              cp "$app/.env.example" "$app/.env"
+              echo "✅ Created $app/.env from template"
+            fi
+          done
+
       # Prepend any command with "nx record --" to record its logs to Nx Cloud
       # - run: npx nx record -- echo Hello World
       - run: npx nx run-many -t lint test build
