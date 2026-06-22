@@ -4,9 +4,14 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
+import { AuthResolver } from './auth/auth.resolver';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
+    JwtModule,
     ConfigModule,
     PrismaModule,
     UsersModule,
@@ -15,8 +20,9 @@ import { ConfigModule } from '@nestjs/config';
       graphiql: true,
       autoSchemaFile: true,
     }),
+    AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [AuthService, AuthResolver],
 })
 export class AppModule {}
