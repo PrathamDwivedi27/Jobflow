@@ -51,7 +51,7 @@
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "jobflow-auth:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {
@@ -63,12 +63,13 @@
       }
     },
     "test": {
+      "dependsOn": ["generate-types"],
       "options": {
         "passWithNoTests": true
       }
     },
 
-    "generate-types":{
+    "generate-types": {
       "command": "prisma generate",
       "options": {
         "cwd": "apps/jobflow-auth",
@@ -77,7 +78,7 @@
       "cache": true
     },
 
-    "migrate-prisma":{
+    "migrate-prisma": {
       "command": "prisma migrate dev",
       "options": {
         "cwd": "apps/jobflow-auth"
