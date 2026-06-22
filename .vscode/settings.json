@@ -1,0 +1,18 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "json.validate.enable": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "tsconfig.json",
+        "tsconfig.*.json",
+        "**/tsconfig.json",
+        "**/tsconfig.*.json",
+        "libs/**/tsconfig*.json",
+        "apps/**/tsconfig*.json"
+      ],
+      "url": "https://json.schemastore.org/tsconfig"
+    }
+],
+"js/ts.tsdk.path": "node_modules/typescript/lib"
+}
