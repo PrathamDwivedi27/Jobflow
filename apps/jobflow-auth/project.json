@@ -72,9 +72,10 @@
     "generate-types": {
       "command": "prisma generate",
       "options": {
-        "cwd": "apps/jobflow-auth",
-        "input": ["prisma/schema.prisma"]
+        "cwd": "apps/jobflow-auth"
       },
+      "inputs": ["{projectRoot}/prisma/schema.prisma"],
+      "outputs": ["{projectRoot}/src/generated/prisma"],
       "cache": true
     },
 
