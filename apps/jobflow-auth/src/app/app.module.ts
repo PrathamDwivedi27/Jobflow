@@ -18,6 +18,12 @@ import { JwtModule } from '@nestjs/jwt';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       graphiql: true,
+      path: 'auth',
+      playground: {
+        settings: {
+          'request.credentials': 'include',
+        },
+      },
       context: ({ req, res }) => ({ req, res }),
       autoSchemaFile: true,
     }),
