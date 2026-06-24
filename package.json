@@ -3,7 +3,18 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "generate-ts-proto": "node ./scripts/generate-proto.js"
+  },
+  "nx": {
+    "targets": {
+      "generate-ts-proto": {
+        "inputs": [
+          "{workspaceRoot}/proto/*.proto"
+        ],
+        "cache": true
+      }
+    }
   },
   "private": true,
   "dependencies": {
