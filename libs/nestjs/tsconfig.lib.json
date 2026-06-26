@@ -14,5 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "../../apps/jobflow-auth/src/app/auth/guards/jwt-auth.guard.ts"
+  ]
 }
