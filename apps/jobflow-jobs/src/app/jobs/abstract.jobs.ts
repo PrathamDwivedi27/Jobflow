@@ -1,4 +1,4 @@
-import { PulsarClient } from '@jobflow/pulsar';
+import { PulsarClient, serialize } from '@jobflow/pulsar';
 import { Producer } from 'pulsar-client';
 
 export abstract class AbstractJob<T> {
@@ -11,6 +11,6 @@ export abstract class AbstractJob<T> {
       this.producer = await this.pulsarClient.createProducer(job);
     }
 
-    await this.producer.send({ data: Buffer.from(JSON.stringify(data)) });
+    await this.producer.send({ data: serialize(data) });
   }
 }
