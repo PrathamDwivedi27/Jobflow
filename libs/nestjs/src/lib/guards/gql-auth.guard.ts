@@ -53,3 +53,19 @@ export class GqlAuthGuard implements CanActivate, OnModuleInit {
     return ctx.getContext().req;
   }
 }
+
+/*
+
+Why is there a second GqlAuthGuard? The one in jobflow-auth uses Passport locally (has the JWT secret, can verify the token itself). The one in libs is for other services (jobflow-jobs) that don't have the JWT secret — they can't verify tokens themselves. Instead they call the auth service via gRPC and ask "is this token valid?"
+The flow:
+
+Request hits jobflow-jobs with cookie Authentication: <jwt>
+This guard extracts the token from the cookie
+Calls authService.authenticate({ token }) via gRPC — sends to jobflow-auth
+jobflow-auth verifies the token, returns the User object
+Guard sets req.user = res (the full user object)
+Returns true — request proceeds
+
+catchError returns of(false) — if auth service is down or token is invalid, the guard returns false (unauthorized) instead of crashing.
+
+*/

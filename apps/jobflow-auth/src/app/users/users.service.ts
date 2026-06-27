@@ -29,3 +29,10 @@ export class UsersService {
     });
   }
 }
+
+/*
+
+Prisma.UserWhereUniqueInput is a Prisma-generated type that only accepts fields marked @unique in your schema (like id or email). 
+This makes the function flexible — you can call getUser({ email }) or getUser({ id }) and both work
+
+*/

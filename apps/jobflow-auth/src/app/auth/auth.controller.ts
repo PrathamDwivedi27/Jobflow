@@ -23,3 +23,13 @@ export class AuthController implements AuthServiceController {
     return this.usersService.getUser({ id: request.user.userId });
   }
 }
+
+/*
+
+This is not a REST controller. The @AuthServiceControllerMethods() decorator (auto-generated from your .proto file) wires this class to handle gRPC calls. When jobflow-jobs sends a gRPC authenticate request:
+
+JwtAuthGuard runs → validates the JWT token in the request
+request.user is populated with TokenPayload by Passport
+The full User object is fetched from DB and returned to the caller
+
+*/

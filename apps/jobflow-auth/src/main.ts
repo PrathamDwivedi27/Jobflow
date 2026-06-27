@@ -30,3 +30,17 @@ async function bootstrap() {
 }
 
 bootstrap();
+
+/*
+
+This does three things at once:
+
+1.Starts a normal HTTP server (for GraphQL mutations like login)
+2.Starts a gRPC microservice on the same process (so jobflow-jobs can call it internally)
+3.whitelist: true on ValidationPipe strips any extra fields not in your DTOs — protects against unexpected input
+4.cookieParser() lets Express read req.cookies — without this, request.cookies.Authentication would be undefined
+
+Why gRPC here? Because jobflow-jobs needs to verify a user's identity. Instead of calling the public HTTP/GraphQL API, 
+services talk through gRPC — faster, type-safe via protobuf, and not exposed publicly.
+
+*/

@@ -33,3 +33,11 @@ export class JobsService implements OnModuleInit {
     return job.meta;
   }
 }
+
+/*
+
+OnModuleInit is a NestJS lifecycle hook — onModuleInit() runs once, right after the module is fully loaded. At that moment, DiscoveryService scans all registered providers in the NestJS DI container, finds every class tagged with 'job_meta', and stores them.
+Your question: "If a job is already executed, does it still get picked up?"
+Yes — and that's intentional. onModuleInit builds a registry of available job definitions, not a history of executions. Think of it like a menu at a restaurant — the menu lists all dishes. Whether you've ordered one before doesn't remove it from the menu. executeJob(name) is the act of ordering — the registry just tells you what's available.
+
+*/

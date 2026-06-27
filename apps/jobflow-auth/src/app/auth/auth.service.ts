@@ -25,9 +25,10 @@ export class AuthService {
     const tokenPayload: TokenPayload = {
       userId: user.id,
     };
-    const accessToken = this.jwtService.sign(tokenPayload);
+    const accessToken = this.jwtService.sign(tokenPayload); // creates a signed jwt string
     response.cookie('Authentication', accessToken, {
-      httpOnly: true,
+      // writes the signed jwt into an httpOnlyCookie
+      httpOnly: true, // We are using httponly cookie because JavaScript running in the browser cannot read httpOnly cookies. This means even if your site has an XSS vulnerability, an attacker's injected JS can't steal the token. The cookie is sent automatically by the browser on every request.
       secure: this.configService.get('NODE_ENV') === 'production',
       expires,
     });
