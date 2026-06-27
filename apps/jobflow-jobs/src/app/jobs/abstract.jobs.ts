@@ -1,8 +1,7 @@
 import { PulsarClient } from '@jobflow/pulsar';
-import { OnModuleDestroy } from '@nestjs/common';
 import { Producer } from 'pulsar-client';
 
-export abstract class AbstractJob<T> implements OnModuleDestroy {
+export abstract class AbstractJob<T> {
   private producer: Producer;
 
   constructor(private readonly pulsarClient: PulsarClient) {}
@@ -13,9 +12,5 @@ export abstract class AbstractJob<T> implements OnModuleDestroy {
     }
 
     await this.producer.send({ data: Buffer.from(JSON.stringify(data)) });
-  }
-
-  async onModuleDestroy() {
-    await this.producer.close();
   }
 }
