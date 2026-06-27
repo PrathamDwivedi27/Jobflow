@@ -10,5 +10,8 @@ services:
     image: apachepulsar/pulsar
     command: >
       /pulsar/bin/pulsar standalone
+    environment:
+      # 🚀 Safely caps Java memory allocations for local development
+      PULSAR_MEM: ' -Xms512m -Xmx512m -XX:MaxDirectMemorySize=1g'
     ports:
       - 6650:6650

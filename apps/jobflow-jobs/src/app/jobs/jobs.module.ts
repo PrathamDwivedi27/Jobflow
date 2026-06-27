@@ -7,9 +7,11 @@ import { JobsService } from './jobs.service';
 import { JobsResolver } from './jobs.resolver';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
+import { PulsarModule } from '@jobflow/pulsar';
 @Module({
   imports: [
     DiscoveryModule,
+    PulsarModule,
     ClientsModule.register([
       {
         name: AUTH_PACKAGE_NAME,
