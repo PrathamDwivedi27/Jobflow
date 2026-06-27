@@ -2,7 +2,7 @@ import { GqlAuthGuard } from '@jobflow/nestjs';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Job } from './models/job.model';
 import { JobsService } from './jobs.service';
-import { ExecuteJobInput } from '../dto/execute-job.input';
+import { ExecuteJobInput } from './dto/execute-job.input';
 import { UseGuards } from '@nestjs/common';
 
 @Resolver()
