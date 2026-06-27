@@ -5,3 +5,13 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: example
+
+  pulsar:
+    image: apachepulsar/pulsar
+    command: >
+      /pulsar/bin/pulsar standalone
+    environment:
+      # 🚀 Safely caps Java memory allocations for local development
+      PULSAR_MEM: ' -Xms512m -Xmx512m -XX:MaxDirectMemorySize=1g'
+    ports:
+      - 6650:6650
