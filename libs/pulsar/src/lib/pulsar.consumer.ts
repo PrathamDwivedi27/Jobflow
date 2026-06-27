@@ -1,7 +1,8 @@
+import { OnModuleInit } from '@nestjs/common';
 import { Consumer, Message } from 'pulsar-client';
 import { PulsarClient } from './pulsar.client';
 
-export abstract class PulsarConsumer {
+export abstract class PulsarConsumer implements OnModuleInit {
   private consumer!: Consumer;
 
   constructor(
@@ -9,7 +10,7 @@ export abstract class PulsarConsumer {
     private readonly topic: string,
   ) {}
 
-  async OnModuleInit() {
+  async onModuleInit() {
     this.consumer = await this.pulsarClient.createConsumer(
       this.topic,
       this.onMessage.bind(this),
