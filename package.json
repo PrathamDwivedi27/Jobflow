@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "start": "nx run-many -t serve -p jobflow-auth jobflow-jobs jobflow-executor",
+    "start": "nx run-many -t serve -p auth jobs executor",
     "generate-ts-proto": "node ./scripts/generate-proto.js"
   },
   "nx": {
@@ -17,6 +17,10 @@
       }
     }
   },
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "private": true,
   "dependencies": {
     "@apollo/server": "^5.5.1",

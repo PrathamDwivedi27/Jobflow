@@ -1,2 +1,1 @@
-export * from './lib/graphQL';
-export * from './lib/guards';
+export * from './lib/init';
