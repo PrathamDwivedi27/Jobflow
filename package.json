@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
+    "start": "nx run-many -t serve -p jobflow-auth jobflow-jobs jobflow-executor",
     "generate-ts-proto": "node ./scripts/generate-proto.js"
   },
   "nx": {
@@ -41,7 +42,9 @@
     "class-validator": "^0.15.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
+    "fibonacci": "^1.6.12",
     "graphql": "^16.14.2",
+    "graphql-type-json": "^0.3.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.21.0",

@@ -38,7 +38,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/jobflow-auth-e2e/**/*", "apps/jobflow-jobs-e2e/**/*"]
+      "exclude": [
+        "apps/jobflow-auth-e2e/**/*",
+        "apps/jobflow-jobs-e2e/**/*",
+        "apps/jobflow-executor-e2e/**/*"
+      ]
     }
   ],
   "targetDefaults": {
