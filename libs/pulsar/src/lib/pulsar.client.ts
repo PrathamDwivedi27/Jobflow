@@ -40,3 +40,5 @@ export class PulsarClient implements OnModuleDestroy {
     await this.client.close();
   }
 }
+
+// pulsar supports batching by default
