@@ -37,30 +37,7 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "exclude": [
-        "apps/jobflow-auth-e2e/**/*",
-        "apps/jobflow-jobs-e2e/**/*",
-        "apps/jobflow-executor-e2e/**/*"
-      ]
-    }
-  ],
-  "targetDefaults": {
-    "build": {
-      "inputs": [
-        "{projectRoot}/**/*",
-        "{workspaceRoot}/lib/**/*",
-        "{workspaceRoot}/proto/*"
-      ],
-      "options": {
-        "assets": [
-          {
-            "glob": "*.proto",
-            "input": "proto",
-            "output": "proto"
-          }
-        ]
       }
     }
-  }
+  ]
 }
