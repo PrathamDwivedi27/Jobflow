@@ -1,12 +1,12 @@
 import { Controller, UseGuards } from '@nestjs/common';
 import { Observable } from 'rxjs';
-// eslint-disable-next-line @nx/enforce-module-boundaries
+ 
 import {
   AuthenticateRequest,
   AuthServiceController,
   AuthServiceControllerMethods,
   User,
-} from 'types/proto/auth';
+} from '@jobflow/grpc';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { UsersService } from '../users/users.service';
 import { TokenPayload } from './token-payload.interface';

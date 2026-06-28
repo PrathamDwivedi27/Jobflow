@@ -1,9 +1,9 @@
-// eslint-disable-next-line @nx/enforce-module-boundaries
+ 
 import {
   AUTH_PACKAGE_NAME,
   AUTH_SERVICE_NAME,
   AuthServiceClient,
-} from 'types/proto/auth';
+} from '@jobflow/grpc';
 import {
   CanActivate,
   ExecutionContext,

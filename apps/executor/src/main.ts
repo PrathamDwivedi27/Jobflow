@@ -1,4 +1,4 @@
- 
+require('module-alias/register');
 import { init } from '@jobflow/nestjs';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';

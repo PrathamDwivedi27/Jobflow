@@ -1,5 +1,5 @@
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { AUTH_PACKAGE_NAME } from 'types/proto/auth';
+ 
+import { AUTH_PACKAGE_NAME } from '@jobflow/grpc';
 import { DiscoveryModule } from '@golevelup/nestjs-discovery';
 import { Module } from '@nestjs/common';
 import { FibonacciJob } from './jobs/fibonacci/fibonacci.job';
@@ -18,7 +18,7 @@ import { PulsarModule } from '@jobflow/pulsar';
         transport: Transport.GRPC,
         options: {
           package: AUTH_PACKAGE_NAME,
-          protoPath: join(__dirname, 'proto/auth.proto'),
+          protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
         },
       },
     ]),

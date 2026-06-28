@@ -2,6 +2,8 @@
   "name": "@jobflow/executor",
   "version": "0.0.0",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "fibonacci": "^1.6.12"
+  },
   "devDependencies": {}
 }

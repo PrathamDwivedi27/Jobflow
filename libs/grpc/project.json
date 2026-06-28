@@ -1,0 +1,31 @@
+{
+  "name": "grpc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/grpc/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project grpc --web",
+  "targets": {
+    "build": {
+      "dependsOn": ["generate-ts-proto"],
+      "options": {
+        "assets": [
+          {
+            "glob": "*.proto",
+            "input": "{projectRoot}/src/lib/proto",
+            "output": "./proto"
+          }
+        ]
+      }
+    },
+    "generate-ts-proto": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node ../../../../scripts/generate-proto.js"],
+        "cwd": "{projectRoot}/src/lib",
+        "input": ["proto/*.proto"]
+      },
+      "cache": true
+    }
+  }
+}

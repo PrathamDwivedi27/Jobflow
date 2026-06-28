@@ -12,7 +12,9 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     JwtModule,
-    ConfigModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     PrismaModule,
     UsersModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
