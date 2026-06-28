@@ -1,5 +1,5 @@
 require('module-alias/register');
- 
+
 import { AUTH_PACKAGE_NAME } from '@jobflow/grpc';
 import { join } from 'path';
 import { NestFactory } from '@nestjs/core';
@@ -9,7 +9,7 @@ import { GrpcOptions, Transport } from '@nestjs/microservices';
 import { init } from '@jobflow/nestjs';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
   await init(app);
   app.connectMicroservice<GrpcOptions>({
     transport: Transport.GRPC,
