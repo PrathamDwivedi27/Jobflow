@@ -8,9 +8,12 @@ import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { AuthResolver } from './auth/auth.resolver';
 import { JwtModule } from '@nestjs/jwt';
+import { LoggerModule } from '@jobflow/nestjs';
+import { GqlLoggingPlugin } from '@jobflow/graphql';
 
 @Module({
   imports: [
+    LoggerModule,
     JwtModule,
     ConfigModule.forRoot({
       isGlobal: true,
@@ -18,6 +21,7 @@ import { JwtModule } from '@nestjs/jwt';
     PrismaModule,
     UsersModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
+      plugins: [new GqlLoggingPlugin()],
       driver: ApolloDriver,
       graphiql: true,
       playground: {
