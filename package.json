@@ -29,7 +29,8 @@
     "pg": "^8.21.0",
     "pino-http": "^11.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "uuid": "^14.0.1"
   },
   "_moduleAliases": {
     "@jobflow/grpc": "dist/libs/grpc/main",

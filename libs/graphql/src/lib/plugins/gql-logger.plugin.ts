@@ -4,8 +4,8 @@ import {
   GraphQLRequestContext,
   GraphQLRequestListener,
 } from '@apollo/server';
-import { v4 as uuidv4 } from 'uuid';
 import { Logger } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 
 export class GqlLoggingPlugin implements ApolloServerPlugin {
   private readonly logger = new Logger(GqlLoggingPlugin.name);
@@ -15,7 +15,7 @@ export class GqlLoggingPlugin implements ApolloServerPlugin {
   ): Promise<void | GraphQLRequestListener<BaseContext>> {
     const { request } = requestContext;
     const start = Date.now();
-    const requestId = uuidv4();
+    const requestId = randomUUID();
 
     this.logger.log({
       requestId,
