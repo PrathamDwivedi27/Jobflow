@@ -19,3 +19,5 @@ public is tenant
 default is namespace
 
 bin/pulsar-admin topics stats <default-topic-name>
+
+docker build -t jobs -f apps/jobs/Dockerfile .
