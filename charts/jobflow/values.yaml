@@ -49,3 +49,21 @@ jobs:
   port:
     http: 3001
 
+executor:
+  enabled: true
+  replicas: 1
+  image: '274414892749.dkr.ecr.ap-south-2.amazonaws.com/jobflow/executor:latest'
+  port:
+    http: 3002
+
+auth:
+  enabled: true
+  replicas: 1
+  image: '274414892749.dkr.ecr.ap-south-2.amazonaws.com/jobflow/auth:latest'
+  port:
+    http: 3000
+    grpc: 5000
+  jwt:
+    secret: dOFl9XLzc5nr2eiapqOhW8o1
+    expirationMs: 28800000
+
