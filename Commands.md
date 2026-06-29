@@ -21,3 +21,14 @@ default is namespace
 bin/pulsar-admin topics stats <default-topic-name>
 
 docker build -t jobs -f apps/jobs/Dockerfile .
+
+// create helm chart
+helm install jobflow ./charts/jobflow -n jobflow --create-namespace
+
+kubectl get pods --namespace jobflow
+
+kubectl describe pod jobs-f97bd75b4-6l692 --namespace jobflow
+
+helm uninstall jobflow -n jobflow
+
+kubectl get svc -n pulsar get service, broker is what provides pulsar the envs

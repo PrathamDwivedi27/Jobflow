@@ -2,6 +2,8 @@ FROM node:20-slim AS builder
 
 WORKDIR /workspace
 
+RUN apt-get update && apt-get install -y openssl
+
 COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
@@ -23,6 +25,8 @@ RUN apt-get update && apt-get install -y protobuf-compiler
 RUN npx nx run-many -t build -p grpc graphql nestjs prisma auth
 
 FROM node:20-slim AS runner
+
+RUN apt-get update && apt-get install -y openssl
 
 WORKDIR /app
 
