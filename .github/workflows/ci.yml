@@ -63,11 +63,11 @@ jobs:
 
       - name: Build and push all images to ECR
         run: |
-          IMAGES={
+          IMAGES=(
             "jobs apps/jobs/Dockerfile"
             "executor apps/executor/Dockerfile"
             "auth apps/auth/Dockerfile"
-          }
+          )
 
           for image in "${IMAGES[@]}"; do
             NAME=$(echo $image | cut -d' ' -f1)
