@@ -7,5 +7,7 @@
     "@golevelup/nestjs-discovery": "^7.0.3",
     "graphql-type-json": "^0.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/multer": "^2.1.0"
+  }
 }
