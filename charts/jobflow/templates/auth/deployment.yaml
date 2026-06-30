@@ -24,7 +24,7 @@ spec:
           command: ["sh", "-c"]
           args: 
             - |
-              npx prisma migrate deploy --schema=apps/auth/prisma/schema.prisma
+              npx prisma migrate deploy --schema=apps/auth/prisma/schema.prisma --config=apps/auth/prisma.config.ts
           env:
             {{- include "common.env" . | nindent 12 }}
       containers:
