@@ -29,6 +29,18 @@ kubectl get pods --namespace jobflow
 
 kubectl describe pod jobs-f97bd75b4-6l692 --namespace jobflow
 
+## Step by step command if something gets wrong with pods
+
 helm uninstall jobflow -n jobflow
+helm dependency update ./charts/jobflow
+kubectl create namespace postgresql
+helm install jobflow ./charts/jobflow -n jobflow --create-namespace
+kubectl get pods --namespace jobflow
 
 kubectl get svc -n pulsar get service, broker is what provides pulsar the envs
+
+kubectl get svc -n jobflow
+
+# to expose localcluster to network in local deployment
+
+minikube service jobs -n jobflow => this will give local deployment url
