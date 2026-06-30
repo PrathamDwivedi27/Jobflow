@@ -25,6 +25,8 @@ spec:
             - containerPort: {{ .Values.jobs.port.http }}
           env:
             {{- include "common.env" . | nindent 12 }}
+            - name: AUTH_GRPC_SERVICE_URL
+              value: "auth-grpc:{{ .Values.auth.port.grpc }}"
             - name: PORT
               value: "{{ .Values.jobs.port.http }}"
 {{- end }}
