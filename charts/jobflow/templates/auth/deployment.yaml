@@ -17,6 +17,16 @@ spec:
     spec:
       imagePullSecrets:
         - name: ecr-cred
+      initContainers:
+        - name: prisma-migrate
+          image: {{ .Values.auth.image }}
+          imagePullPolicy: {{ .Values.global.imagePullPolicy }}
+          command: ["sh", "-c"]
+          args: 
+            - |
+              npx prisma migrate deploy --schema=apps/auth/prisma/schema.prisma
+          env:
+            {{- include "common.env" . | nindent 12 }}
       containers:
         - name: auth
           image: {{ .Values.auth.image }}
