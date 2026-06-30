@@ -15,6 +15,8 @@ spec:
       labels:
         app: auth
     spec:
+      imagePullSecrets:
+        - name: ecr-cred
       containers:
         - name: auth
           image: {{ .Values.auth.image }}
@@ -26,9 +28,9 @@ spec:
             {{- include "common.env" . | nindent 12 }}
             - name: PORT
               value: "{{ .Values.auth.port.http }}"
-            - name: JWT_SECRET
+            - name: AUTH_JWT_SECRET
               value: {{ .Values.auth.jwt.secret }}
-            - name: JWT_EXPIRATION_MS
+            - name: AUTH_JWT_EXPIRATION_MS
               value: "{{ .Values.auth.jwt.expirationMs }}"
             - name: AUTH_GRPC_SERVICE_URL
               value: "0.0.0.0:{{ .Values.auth.port.grpc }}"

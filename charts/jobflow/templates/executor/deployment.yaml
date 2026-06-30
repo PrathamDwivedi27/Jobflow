@@ -15,6 +15,8 @@ spec:
       labels:
         app: executor
     spec:
+      imagePullSecrets:
+        - name: ecr-cred
       containers:
         - name: executor
           image: {{ .Values.executor.image }}
