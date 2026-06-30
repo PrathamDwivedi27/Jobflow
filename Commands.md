@@ -44,3 +44,11 @@ kubectl get svc -n jobflow
 # to expose localcluster to network in local deployment
 
 minikube service jobs -n jobflow => this will give local deployment url
+
+# to check msg acknowledge rate .
+
+kubectl exec -it jobflow-v2-pulsar-toolset-0 -n pulsar -- bash
+
+# Inside the toolset container:
+
+pulsar-admin topics stats persistent://public/default/your-topic-name

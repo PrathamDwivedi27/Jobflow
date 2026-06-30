@@ -51,7 +51,7 @@ async function executeJobWithInput(executeJobInput, cookies) {
 
 (async () => {
   const { data: loginData, cookies } = await login(
-    'test@fool.dev',
+    'lordofthemysteries@fool.dev',
     'Qwerty123@$',
   );
   if (loginData?.data.login.id) {
