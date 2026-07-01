@@ -1,4 +1,4 @@
-import { AUTH_PACKAGE_NAME } from '@jobflow/grpc';
+import { Packages } from '@jobflow/grpc';
 import { DiscoveryModule } from '@golevelup/nestjs-discovery';
 import { Module } from '@nestjs/common';
 import { FibonacciJob } from './jobs/fibonacci/fibonacci.job';
@@ -14,12 +14,12 @@ import { ConfigService } from '@nestjs/config';
     PulsarModule,
     ClientsModule.registerAsync([
       {
-        name: AUTH_PACKAGE_NAME,
+        name: Packages.AUTH,
         useFactory: (configService: ConfigService) => ({
           transport: Transport.GRPC,
           options: {
             url: configService.getOrThrow('AUTH_GRPC_SERVICE_URL'),
-            package: AUTH_PACKAGE_NAME,
+            package: Packages.AUTH,
             protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
           },
         }),
