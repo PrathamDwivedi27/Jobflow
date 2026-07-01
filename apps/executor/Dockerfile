@@ -28,6 +28,7 @@ WORKDIR /app
 COPY --from=builder /workspace/package.json ./
 COPY --from=builder /workspace/apps/executor/package.json ./apps/executor/package.json
 COPY --from=builder /workspace/libs/grpc/package.json ./libs/grpc/package.json
+COPY --from=builder /workspace/libs/grpc/src/lib ./libs/grpc/src/lib
 COPY --from=builder /workspace/libs/pulsar/package.json ./libs/pulsar/package.json
 COPY --from=builder /workspace/package-lock.json ./
 

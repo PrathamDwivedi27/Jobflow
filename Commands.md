@@ -23,7 +23,7 @@ bin/pulsar-admin topics stats <default-topic-name>
 docker build -t jobs -f apps/jobs/Dockerfile .
 
 // create helm chart
-helm install jobflow ./charts/jobflow -n jobflow --create-namespace
+helm install jobflow-v2 ./charts/jobflow -n jobflow --create-namespace
 
 kubectl get pods --namespace jobflow
 
@@ -34,7 +34,7 @@ kubectl describe pod jobs-f97bd75b4-6l692 --namespace jobflow
 helm uninstall jobflow -n jobflow
 helm dependency update ./charts/jobflow
 kubectl create namespace postgresql
-helm install jobflow ./charts/jobflow -n jobflow --create-namespace
+helm install jobflow-v2 ./charts/jobflow -n jobflow --create-namespace
 kubectl get pods --namespace jobflow
 
 kubectl get svc -n pulsar get service, broker is what provides pulsar the envs
@@ -56,3 +56,11 @@ pulsar-admin topics stats persistent://public/default/your-topic-name
 # To scale pod
 
 kubectl scale deployment executor --replicas 5 -n jobflow
+
+# Run this in CMD for ecr login
+
+FOR /F "tokens=\*" %g IN ('aws ecr get-login-password --region ap-south-2') DO kubectl create secret docker-registry ecr-cred --docker-server=274414892749.dkr.ecr.ap-south-2.amazonaws.com --docker-username=AWS --docker-password=%g --namespace=jobflow
+
+kubectl get secret ecr-cred -n jobflow
+
+kubectl rollout restart deployment auth jobs executor products -n jobflow
