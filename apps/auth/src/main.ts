@@ -1,6 +1,6 @@
 require('module-alias/register');
 
-import { AUTH_PACKAGE_NAME } from '@jobflow/grpc';
+import { Packages } from '@jobflow/grpc';
 import { join } from 'path';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
@@ -16,8 +16,8 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       url: app.get(ConfigService).getOrThrow('AUTH_GRPC_SERVICE_URL'),
-      package: AUTH_PACKAGE_NAME,
-      protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
+      package: Packages.AUTH,
+      protoPath: join(process.cwd(), 'libs/grpc/src/lib/proto/auth.proto'),
     },
   });
   await app.startAllMicroservices();

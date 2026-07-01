@@ -1,9 +1,4 @@
- 
-import {
-  AUTH_PACKAGE_NAME,
-  AUTH_SERVICE_NAME,
-  AuthServiceClient,
-} from '@jobflow/grpc';
+import { Packages, AUTH_SERVICE_NAME, AuthServiceClient } from '@jobflow/grpc';
 import {
   CanActivate,
   ExecutionContext,
@@ -20,7 +15,7 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 export class GqlAuthGuard implements CanActivate, OnModuleInit {
   private readonly logger = new Logger(GqlAuthGuard.name);
   private authService: AuthServiceClient;
-  constructor(@Inject(AUTH_PACKAGE_NAME) private client: ClientGrpc) {}
+  constructor(@Inject(Packages.AUTH) private client: ClientGrpc) {}
 
   onModuleInit() {
     this.authService =

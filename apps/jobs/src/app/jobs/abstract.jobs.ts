@@ -22,13 +22,13 @@ export abstract class AbstractJob<T extends object> {
       return;
     }
 
-    await this.send(data); // if single message no batching
+    this.send(data); // if single message no batching
   }
 
-  private async send(data: T) {
+  private send(data: T) {
     // here data can is single message
-    await this.validateData(data);
-    await this.producer.send({ data: serialize(data) });
+    this.validateData(data);
+    this.producer.send({ data: serialize(data) });
   }
 
   private async validateData(data: T) {

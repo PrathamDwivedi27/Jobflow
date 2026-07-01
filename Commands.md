@@ -52,3 +52,7 @@ kubectl exec -it jobflow-v2-pulsar-toolset-0 -n pulsar -- bash
 # Inside the toolset container:
 
 pulsar-admin topics stats persistent://public/default/your-topic-name
+
+# To scale pod
+
+kubectl scale deployment executor --replicas 5 -n jobflow

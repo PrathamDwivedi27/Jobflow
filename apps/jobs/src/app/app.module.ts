@@ -5,9 +5,11 @@ import { JobsModule } from './jobs.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { LoggerModule } from '@jobflow/nestjs';
 import { GqlLoggingPlugin } from '@jobflow/graphql';
+import { UploadsModule } from './uploads/uploads.module';
 
 @Module({
   imports: [
+    UploadsModule,
     LoggerModule,
     ConfigModule.forRoot({
       isGlobal: true,

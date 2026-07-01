@@ -39,6 +39,7 @@ const args = [
   `--plugin=${plugin}`,
   `--ts_proto_out=./types`,
   `--ts_proto_opt=nestJs=true`,
+  `--ts_proto_opt=exportCommonSymbols=false`,
   ...protos,
 ];
 
