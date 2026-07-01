@@ -8,6 +8,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 import { PulsarModule } from '@jobflow/pulsar';
 import { ConfigService } from '@nestjs/config';
+import { LoadProductsJob } from './jobs/products/load-products.job';
 @Module({
   imports: [
     DiscoveryModule,
@@ -20,13 +21,16 @@ import { ConfigService } from '@nestjs/config';
           options: {
             url: configService.getOrThrow('AUTH_GRPC_SERVICE_URL'),
             package: Packages.AUTH,
-            protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
+            protoPath: join(
+              process.cwd(),
+              'libs/grpc/src/lib/proto/auth.proto',
+            ),
           },
         }),
         inject: [ConfigService],
       },
     ]),
   ],
-  providers: [FibonacciJob, JobsService, JobsResolver],
+  providers: [FibonacciJob, JobsService, JobsResolver, LoadProductsJob],
 })
 export class JobsModule {}

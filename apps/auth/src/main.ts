@@ -17,7 +17,7 @@ async function bootstrap() {
     options: {
       url: app.get(ConfigService).getOrThrow('AUTH_GRPC_SERVICE_URL'),
       package: Packages.AUTH,
-      protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
+      protoPath: join(process.cwd(), 'libs/grpc/src/lib/proto/auth.proto'),
     },
   });
   await app.startAllMicroservices();

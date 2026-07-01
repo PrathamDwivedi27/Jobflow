@@ -1,3 +1,5 @@
+require('module-alias/register');
+
 import { Packages } from '@jobflow/grpc';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
 import { NestFactory } from '@nestjs/core';
@@ -13,8 +15,8 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       url: app.get(ConfigService).getOrThrow('PRODUCTS_GRPC_SERVICE_URL'),
-      package: Packages.AUTH,
-      protoPath: join(__dirname, '../../libs/grpc/proto/products.proto'),
+      package: Packages.PRODUCTS,
+      protoPath: join(process.cwd(), 'libs/grpc/src/lib/proto/products.proto'),
     },
   });
   await app.startAllMicroservices();
