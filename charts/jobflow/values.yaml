@@ -45,7 +45,12 @@ postgresql:
   auth: 
     username: postgres
     password: postgres
-    database: jobflow
+  primary:
+    initdb:
+      scripts:
+        create-dbs.sql:
+          CREATE DATABASE auth;
+          CREATE DATABASE products;
 
 
 jobs:
@@ -72,4 +77,12 @@ auth:
   jwt:
     secret: dOFl9XLzc5nr2eiapqOhW8o1
     expirationMs: "28800000"
+
+products:
+  enabled: true
+  replicas: 1
+  image: '274414892749.dkr.ecr.ap-south-2.amazonaws.com/jobflow/products:latest'
+  port:
+    http: 3003
+    grpc: 5001
 
