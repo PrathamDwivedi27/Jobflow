@@ -558,6 +558,7 @@ export const JobScalarFieldEnum = {
   name: 'name',
   size: 'size',
   completed: 'completed',
+  status: 'status',
   started: 'started',
   ended: 'ended',
 } as const;

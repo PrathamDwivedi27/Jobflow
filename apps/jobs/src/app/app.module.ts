@@ -6,11 +6,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { LoggerModule } from '@jobflow/nestjs';
 import { GqlLoggingPlugin } from '@jobflow/graphql';
 import { UploadsModule } from './uploads/uploads.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
     UploadsModule,
     LoggerModule,
+    PrismaModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

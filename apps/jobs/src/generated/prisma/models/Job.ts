@@ -43,6 +43,7 @@ export type JobMinAggregateOutputType = {
   name: string | null;
   size: number | null;
   completed: number | null;
+  status: string | null;
   started: Date | null;
   ended: Date | null;
 };
@@ -52,6 +53,7 @@ export type JobMaxAggregateOutputType = {
   name: string | null;
   size: number | null;
   completed: number | null;
+  status: string | null;
   started: Date | null;
   ended: Date | null;
 };
@@ -61,6 +63,7 @@ export type JobCountAggregateOutputType = {
   name: number;
   size: number;
   completed: number;
+  status: number;
   started: number;
   ended: number;
   _all: number;
@@ -83,6 +86,7 @@ export type JobMinAggregateInputType = {
   name?: true;
   size?: true;
   completed?: true;
+  status?: true;
   started?: true;
   ended?: true;
 };
@@ -92,6 +96,7 @@ export type JobMaxAggregateInputType = {
   name?: true;
   size?: true;
   completed?: true;
+  status?: true;
   started?: true;
   ended?: true;
 };
@@ -101,6 +106,7 @@ export type JobCountAggregateInputType = {
   name?: true;
   size?: true;
   completed?: true;
+  status?: true;
   started?: true;
   ended?: true;
   _all?: true;
@@ -204,6 +210,7 @@ export type JobGroupByOutputType = {
   name: string;
   size: number;
   completed: number;
+  status: string;
   started: Date;
   ended: Date | null;
   _count: JobCountAggregateOutputType | null;
@@ -234,6 +241,7 @@ export type JobWhereInput = {
   name?: Prisma.StringFilter<'Job'> | string;
   size?: Prisma.IntFilter<'Job'> | number;
   completed?: Prisma.IntFilter<'Job'> | number;
+  status?: Prisma.StringFilter<'Job'> | string;
   started?: Prisma.DateTimeFilter<'Job'> | Date | string;
   ended?: Prisma.DateTimeNullableFilter<'Job'> | Date | string | null;
 };
@@ -243,6 +251,7 @@ export type JobOrderByWithRelationInput = {
   name?: Prisma.SortOrder;
   size?: Prisma.SortOrder;
   completed?: Prisma.SortOrder;
+  status?: Prisma.SortOrder;
   started?: Prisma.SortOrder;
   ended?: Prisma.SortOrderInput | Prisma.SortOrder;
 };
@@ -256,6 +265,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<
     name?: Prisma.StringFilter<'Job'> | string;
     size?: Prisma.IntFilter<'Job'> | number;
     completed?: Prisma.IntFilter<'Job'> | number;
+    status?: Prisma.StringFilter<'Job'> | string;
     started?: Prisma.DateTimeFilter<'Job'> | Date | string;
     ended?: Prisma.DateTimeNullableFilter<'Job'> | Date | string | null;
   },
@@ -267,6 +277,7 @@ export type JobOrderByWithAggregationInput = {
   name?: Prisma.SortOrder;
   size?: Prisma.SortOrder;
   completed?: Prisma.SortOrder;
+  status?: Prisma.SortOrder;
   started?: Prisma.SortOrder;
   ended?: Prisma.SortOrderInput | Prisma.SortOrder;
   _count?: Prisma.JobCountOrderByAggregateInput;
@@ -288,6 +299,7 @@ export type JobScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<'Job'> | string;
   size?: Prisma.IntWithAggregatesFilter<'Job'> | number;
   completed?: Prisma.IntWithAggregatesFilter<'Job'> | number;
+  status?: Prisma.StringWithAggregatesFilter<'Job'> | string;
   started?: Prisma.DateTimeWithAggregatesFilter<'Job'> | Date | string;
   ended?:
     | Prisma.DateTimeNullableWithAggregatesFilter<'Job'>
@@ -300,6 +312,7 @@ export type JobCreateInput = {
   name: string;
   size: number;
   completed: number;
+  status: string;
   started?: Date | string;
   ended?: Date | string | null;
 };
@@ -309,6 +322,7 @@ export type JobUncheckedCreateInput = {
   name: string;
   size: number;
   completed: number;
+  status: string;
   started?: Date | string;
   ended?: Date | string | null;
 };
@@ -317,6 +331,7 @@ export type JobUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   size?: Prisma.IntFieldUpdateOperationsInput | number;
   completed?: Prisma.IntFieldUpdateOperationsInput | number;
+  status?: Prisma.StringFieldUpdateOperationsInput | string;
   started?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ended?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -330,6 +345,7 @@ export type JobUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   size?: Prisma.IntFieldUpdateOperationsInput | number;
   completed?: Prisma.IntFieldUpdateOperationsInput | number;
+  status?: Prisma.StringFieldUpdateOperationsInput | string;
   started?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ended?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -343,6 +359,7 @@ export type JobCreateManyInput = {
   name: string;
   size: number;
   completed: number;
+  status: string;
   started?: Date | string;
   ended?: Date | string | null;
 };
@@ -351,6 +368,7 @@ export type JobUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   size?: Prisma.IntFieldUpdateOperationsInput | number;
   completed?: Prisma.IntFieldUpdateOperationsInput | number;
+  status?: Prisma.StringFieldUpdateOperationsInput | string;
   started?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ended?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -364,6 +382,7 @@ export type JobUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string;
   size?: Prisma.IntFieldUpdateOperationsInput | number;
   completed?: Prisma.IntFieldUpdateOperationsInput | number;
+  status?: Prisma.StringFieldUpdateOperationsInput | string;
   started?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   ended?:
     | Prisma.NullableDateTimeFieldUpdateOperationsInput
@@ -377,6 +396,7 @@ export type JobCountOrderByAggregateInput = {
   name?: Prisma.SortOrder;
   size?: Prisma.SortOrder;
   completed?: Prisma.SortOrder;
+  status?: Prisma.SortOrder;
   started?: Prisma.SortOrder;
   ended?: Prisma.SortOrder;
 };
@@ -392,6 +412,7 @@ export type JobMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder;
   size?: Prisma.SortOrder;
   completed?: Prisma.SortOrder;
+  status?: Prisma.SortOrder;
   started?: Prisma.SortOrder;
   ended?: Prisma.SortOrder;
 };
@@ -401,6 +422,7 @@ export type JobMinOrderByAggregateInput = {
   name?: Prisma.SortOrder;
   size?: Prisma.SortOrder;
   completed?: Prisma.SortOrder;
+  status?: Prisma.SortOrder;
   started?: Prisma.SortOrder;
   ended?: Prisma.SortOrder;
 };
@@ -440,6 +462,7 @@ export type JobSelect<
     name?: boolean;
     size?: boolean;
     completed?: boolean;
+    status?: boolean;
     started?: boolean;
     ended?: boolean;
   },
@@ -455,6 +478,7 @@ export type JobSelectCreateManyAndReturn<
     name?: boolean;
     size?: boolean;
     completed?: boolean;
+    status?: boolean;
     started?: boolean;
     ended?: boolean;
   },
@@ -470,6 +494,7 @@ export type JobSelectUpdateManyAndReturn<
     name?: boolean;
     size?: boolean;
     completed?: boolean;
+    status?: boolean;
     started?: boolean;
     ended?: boolean;
   },
@@ -481,6 +506,7 @@ export type JobSelectScalar = {
   name?: boolean;
   size?: boolean;
   completed?: boolean;
+  status?: boolean;
   started?: boolean;
   ended?: boolean;
 };
@@ -489,7 +515,7 @@ export type JobOmit<
   ExtArgs extends
     runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  'id' | 'name' | 'size' | 'completed' | 'started' | 'ended',
+  'id' | 'name' | 'size' | 'completed' | 'status' | 'started' | 'ended',
   ExtArgs['result']['job']
 >;
 
@@ -505,6 +531,7 @@ export type $JobPayload<
       name: string;
       size: number;
       completed: number;
+      status: string;
       started: Date;
       ended: Date | null;
     },
@@ -1103,6 +1130,7 @@ export interface JobFieldRefs {
   readonly name: Prisma.FieldRef<'Job', 'String'>;
   readonly size: Prisma.FieldRef<'Job', 'Int'>;
   readonly completed: Prisma.FieldRef<'Job', 'Int'>;
+  readonly status: Prisma.FieldRef<'Job', 'String'>;
   readonly started: Prisma.FieldRef<'Job', 'DateTime'>;
   readonly ended: Prisma.FieldRef<'Job', 'DateTime'>;
 }
