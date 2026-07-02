@@ -2,6 +2,7 @@ import { Jobs } from '@jobflow/nestjs';
 import { Job } from '../../decorators/job.decorator';
 import { LoadProductsMessage, PulsarClient } from '@jobflow/pulsar';
 import { AbstractJob } from '../abstract.jobs';
+import { PrismaService } from '../../prisma/prisma.service';
 
 @Job({
   name: Jobs.LOAD_PRODUCTS,
@@ -10,7 +11,7 @@ import { AbstractJob } from '../abstract.jobs';
 export class LoadProductsJob extends AbstractJob<LoadProductsMessage> {
   protected messageClass = LoadProductsMessage;
 
-  constructor(pulsarClient: PulsarClient) {
-    super(pulsarClient);
+  constructor(pulsarClient: PulsarClient, prismaService: PrismaService) {
+    super(pulsarClient, prismaService);
   }
 }
