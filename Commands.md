@@ -64,3 +64,5 @@ FOR /F "tokens=\*" %g IN ('aws ecr get-login-password --region ap-south-2') DO k
 kubectl get secret ecr-cred -n jobflow
 
 kubectl rollout restart deployment auth jobs executor products -n jobflow
+
+kubectl exec --stdin --tty jobs-7b77956bd4-whc8m -n jobflow sh
